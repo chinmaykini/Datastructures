@@ -1,6 +1,7 @@
 package Trie;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Trie {
 	
@@ -14,9 +15,24 @@ public class Trie {
 		this.root = root;
 	}
 
-	// Root node is '0'
+	// Root node is '/'
 	public Trie() {
-		this.root = new TrieNode('o');
+		this.root = new TrieNode('/');
+	}
+	
+	/*
+	 * batch insert words
+	 */
+	public void batchInsert(List<String> inputList){
+		if(inputList == null){
+			return;
+		}
+		
+		for(String element : inputList){
+			insert(element);
+		}
+		
+		return;
 	}
 	
 	/*
@@ -115,6 +131,99 @@ public class Trie {
 			return true;
 		
 		return false;
+	}
+	
+	
+	/*
+	 *  return percentage match workd from a five string
+	 *   ("todo", ["to","cat","do"]) => 100%
+	 *   ("dto", ["to","cat","do"]) => 66%
+	 *   ("rtoldedo", ["to","told","dot"]) => 4/8*100
+	 */
+			
+	public int prefixPercentage(String word, List<String> glossary){
+		
+		int matchSize = 0;
+		
+		if(word == null || glossary == null){
+			return matchSize;
+		}
+		
+		//add glossary to trie
+		batchInsert(glossary);
+		
+		// process one letter at a time, skip ahead if there is a word match 
+		char[] wordCharArray = word.toCharArray();
+		for(int i = 0; i < wordCharArray.length; i++){
+			
+			int maxSizeMatch = getMaxSizeMatch(i,wordCharArray);
+			
+			// if its not equal to current index there was some match
+			if(maxSizeMatch > i){
+				matchSize += maxSizeMatch - i + 1;
+				i = maxSizeMatch;
+			}
+		}
+		
+		// getting percentage from 2 ints, need to add .0f to 100
+		return (int)(matchSize * 100.0f)/word.length();
+	}
+	
+	/*
+	 * return the next index to which the search can begin in the trie
+	 */
+
+	private int getMaxSizeMatch(int startIndex, char[] wordCharArray) {
+		
+		// 5 cases
+		// 1) given index doesnt match the trie - return startIndex
+		// 2) there is prefix match but not a word - return startIndex
+		// 3) there is a word match - return wordMatchIndex
+		// 4) a word and more some prefix match - return wordMatchIndex, last matched
+		// 5) double word match - return wordMatchIndex, updated multiple times
+		
+		if(startIndex > wordCharArray.length-1){
+			return startIndex;
+		}
+		
+		int wordMatchIndex = startIndex;
+		int currentIndex = startIndex;
+		TrieNode crawler = this.root;
+		while(currentIndex < wordCharArray.length){
+			
+			HashMap<Character, TrieNode> children = crawler.getChildren();
+			if(children.containsKey(wordCharArray[currentIndex])){
+				
+				crawler = children.get(wordCharArray[currentIndex]);
+				
+				// if its a wordmatch update wordMatchIndex
+				if(crawler.isEnd()){
+					wordMatchIndex = currentIndex;
+				}
+				
+				// proceed further for max match
+				currentIndex++;
+			
+			}else {
+				// there is no match 
+				break;
+			}		
+		}
+		
+		// - there was a no match OR we have reached end of string
+		if(currentIndex == wordCharArray.length){
+			
+			// check last node for match
+			if(crawler.isEnd()){
+				
+				// return the index of the last element (size-1)
+				wordMatchIndex = currentIndex-1;
+			}
+		} else{
+			// the current index didnt exists and return last known match
+		}
+		
+		return wordMatchIndex;
 	}
 
 }
