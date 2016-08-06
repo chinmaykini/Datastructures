@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class PostOrderStack {
-
 	static  class TreeNode {
 		int val;
 		TreeNode left;
@@ -12,39 +11,34 @@ public class PostOrderStack {
 	public ArrayList<Integer> postorderTraversal(TreeNode root) {
 		ArrayList<Integer> res = new ArrayList<Integer>();
 		Stack<TreeNode> st = new Stack<TreeNode>();
-		TreeNode pre=root;
 		TreeNode lastPopped = null;
-
-		if( pre != null){
-			st.push(pre);
-		}
-		if( pre.right != null){
-			st.push(pre.right);
-		}
-		if( pre.left != null){
-			st.push(pre.left);
-		}
-
+		pushTriplet(root,st);
 		while(  ! st.isEmpty() ){
 			TreeNode curr = st.pop();
-			if(  lastPopped != null && 
-			    (lastPopped == curr.right || lastPopped == curr.left)
+			if( lastPopped != null 
+				&& isChild( curr,lastPopped)
 				|| isLeaf(curr)){
 				res.add(curr.val);
 			}else{
-				if( curr != null){
-					st.push(curr);
-				}
-				if( curr.right != null){
-					st.push(curr.right);
-				}
-				if( curr.left != null){
-					st.push(curr.left);
-				}
+				pushTriplet(curr,st);
 			}
 			lastPopped=curr;
 		}
 		return res;
+	}
+	void pushTriplet(TreeNode curr,Stack<TreeNode> st){
+		if( curr != null){
+			st.push(curr);
+		}
+		if( curr.right != null){
+			st.push(curr.right);
+		}
+		if( curr.left != null){
+			st.push(curr.left);
+		}
+	}
+	boolean isChild(TreeNode curr,TreeNode child){
+		return (curr.left == child ||  curr.right == child);
 	}
 	
 	boolean isLeaf(TreeNode curr){
