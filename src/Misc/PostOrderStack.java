@@ -27,11 +27,9 @@ public class PostOrderStack {
 
 		while(  ! st.isEmpty() ){
 			TreeNode curr = st.pop();
-			if( lastPopped != null
-					&& ( lastPopped == curr.right ||
-					lastPopped == curr.left)
-					|| (curr.left == null && curr.right == null)
-					){
+			if(  lastPopped != null && 
+			    (lastPopped == curr.right || lastPopped == curr.left)
+				|| isLeaf(curr)){
 				res.add(curr.val);
 			}else{
 				if( curr != null){
@@ -47,5 +45,9 @@ public class PostOrderStack {
 			lastPopped=curr;
 		}
 		return res;
+	}
+	
+	boolean isLeaf(TreeNode curr){
+		return (curr.left == null && curr.right == null);
 	}
 }
