@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-=======
 package Misc;
-
->>>>>>> de9059c780c7a9a66ea404ef90427bb225e1d5f9
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class KthSmallest {

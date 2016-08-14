@@ -1,3 +1,6 @@
+package Misc;
+import java.util.PriorityQueue;
+
 public class MaxX {
 	
 	public static void main(String args[]){

@@ -1,8 +1,9 @@
+package Misc;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class MergeKLists {
+public class MergekLists {
 
 	static class ListNode {
 		public int val;
