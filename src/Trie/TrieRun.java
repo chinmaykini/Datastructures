@@ -16,18 +16,19 @@ public class TrieRun {
 		input.add("told");
 		input.add("cart");
 		input.add("dot");
+		input.add("apple");
+		input.add("length");
 		
+		System.out.println(trie.prefixPercentage("applength" , input)); //0
 		
-		System.out.println(trie.prefixPercentage("trcd" , input)); //0
-		System.out.println(trie.prefixPercentage("todo" , input)); //4
-		System.out.println(trie.prefixPercentage("tod" , input)); //2
-		System.out.println(trie.prefixPercentage("dod" , input)); //2
-		System.out.println(trie.prefixPercentage("tolld" , input)); //4
-		System.out.println(trie.prefixPercentage("cardort" , input));//5
-		System.out.println(trie.prefixPercentage("cartendotr" , input));//7
-		System.out.println(trie.prefixPercentage("dcartd" , input)); //4
-		
-
+//		System.out.println(trie.prefixPercentage("trcd" , input)); //0
+//		System.out.println(trie.prefixPercentage("todo" , input)); //4
+//		System.out.println(trie.prefixPercentage("tod" , input)); //2
+//		System.out.println(trie.prefixPercentage("dod" , input)); //2
+//		System.out.println(trie.prefixPercentage("tolld" , input)); //4
+//		System.out.println(trie.prefixPercentage("cardort" , input));//5
+//		System.out.println(trie.prefixPercentage("cartendotr" , input));//7
+//		System.out.println(trie.prefixPercentage("dcartd" , input)); //4
 	}
 
 }

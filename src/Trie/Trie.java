@@ -166,7 +166,8 @@ public class Trie {
 		}
 		
 		// getting percentage from 2 ints, need to add .0f to 100
-		return (int)(matchSize * 100.0f)/word.length();
+//		return (int)(matchSize * 100.0f)/word.length();
+		return matchSize;
 	}
 	
 	/*

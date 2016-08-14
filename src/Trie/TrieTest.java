@@ -28,6 +28,8 @@ public class TrieTest {
 		input.add("told");
 		input.add("cart");
 		input.add("dot");
+		input.add("apple");
+		input.add("length");
 		
 		trie.batchInsert(input);
 		
