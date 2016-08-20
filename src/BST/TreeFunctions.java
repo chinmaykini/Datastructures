@@ -39,4 +39,7 @@ public interface TreeFunctions {
 
 	void printNodesInRange(TreeNode root, int min, int max);
 	
+	int pathLength(TreeNode root, int n);
+	
+	
 }

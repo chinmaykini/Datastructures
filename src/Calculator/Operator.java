@@ -14,8 +14,8 @@ public class  Operator{
 		operatorPredecedenceMap.put('-', 3);
 		operatorPredecedenceMap.put('*', 2);
 		operatorPredecedenceMap.put('/', 2);
-//		operatorPredecedenceMap.put('(', 1);
-//		operatorPredecedenceMap.put(')', 1);
+		operatorPredecedenceMap.put('(', 4);
+		operatorPredecedenceMap.put(')', 4);
 		
 	}
 	
@@ -90,9 +90,9 @@ public class  Operator{
 			throw new Exception("Illegeal operators " +  op1);
 		}
 		
-		if(op2 == '(' || op2 == ')'){
-			return false;
-		}
+//		if(op2 == '(' || op2 == ')'){
+//			return false;
+//		}
 		
 		return operatorPredecedenceMap.get(op1) >= operatorPredecedenceMap.get(op2);
 	}

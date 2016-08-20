@@ -10,13 +10,16 @@ public class ExpressionEval {
 		
 		try {
 			
-			System.out.println(evaluate("1+2"));
-			System.out.println(evaluate("1+2*3"));
-			System.out.println(evaluate("1*2+3"));
-			System.out.println(evaluate("(1+2)*3"));
-			System.out.println(evaluate("(1+2)*3+2"));
-			System.out.println(evaluate("5-(1+2)*3+2"));
-			System.out.println(evaluate("5-(5+4)/3+2"));
+//			System.out.println(evaluate("1+2"));
+//			System.out.println(evaluate("1+2*3"));
+//			System.out.println(evaluate("1*2+3"));
+//			System.out.println(evaluate("(1+2)*3"));
+//			System.out.println(evaluate("(1+2)*3+2"));
+//			System.out.println(evaluate("5-(1+2)*3+2"));
+//			System.out.println(evaluate("5-(5+4)/3+2"));
+			
+			System.out.println(evaluate("5-(5+4*(6-4))/3+2"));
+//			System.out.println(evaluate("5-(5+4)/3+2"));
 		
 		
 		} catch (Exception e) {
