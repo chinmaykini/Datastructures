@@ -1,13 +1,10 @@
 package Misc;
-<<<<<<< HEAD:src/Misc/MergekLists.java
-=======
 
->>>>>>> BT Path length:src/Misc/MergeKLists.java
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class MergekLists {
+public class MergeKLists {
 
 	static class ListNode {
 		public int val;
