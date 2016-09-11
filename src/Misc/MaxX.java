@@ -1,4 +1,5 @@
 package Misc;
+
 import java.util.PriorityQueue;
 
 public class MaxX {
@@ -32,3 +33,4 @@ public class MaxX {
 		return max;
 	}
 }
+

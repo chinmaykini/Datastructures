@@ -549,4 +549,31 @@ public class TreeFunctionsImpl implements TreeFunctions {
 		root.right = null;
 	}
 
+	@Override
+	public int pathLength(TreeNode root, int n) {
+	
+		if(root == null){
+			return 0;
+		}
+		
+		if(root.data == n){
+			return 1;
+		}
+		
+		int leftSum = pathLength(root.left, n);
+		int rightSum = pathLength(root.left, n);
+		
+		if(leftSum > 0){
+			return leftSum + 1;
+		}
+		
+		if(rightSum > 0){
+			return rightSum + 1;
+		}
+		
+		return 0;
+	}
+	
+	
+
 }
