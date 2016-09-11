@@ -39,4 +39,8 @@ public interface TreeFunctions {
 
 	void printNodesInRange(TreeNode root, int min, int max);
 	
+	TreeNode rotateUpsideDownV2(TreeNode root);
+	
+	TreeNode rotateUpsideDownV3(TreeNode root);
+	
 }
