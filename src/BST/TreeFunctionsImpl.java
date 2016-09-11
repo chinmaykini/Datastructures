@@ -481,6 +481,73 @@ public class TreeFunctionsImpl implements TreeFunctions {
 			return (covers(root.left, val) || covers(root.right, val));
 		}
 	}
+	
+	/*
+	 * https://www.careercup.com/question?id=6266917077647360
+	 * (non-Javadoc)
+	 * @see BST.TreeFunctions#rotateUpsideDownV3(BST.TreeNode)
+	 * the newRoot is left mode node and that keeps get returnned
+	 */
+	public TreeNode rotateUpsideDownV3(TreeNode root) {
+		if ( root == null)
+			return root;
+		
+		if( root.left == null && root.right == null)
+			return root;
+		
+		TreeNode newRoot = rotateUpsideDownV3(root.left);
+		siblingRotate2(root);
+		return newRoot;
+	}
+
+	/*https://www.careercup.com/question?id=6266917077647360
+	 * (non-Javadoc)
+	 * @see BST.TreeFunctions#rotateUpsideDownV2(BST.TreeNode)
+	 * heere we rotate and assign the lower level root
+	 * the roatate happens witight most child
+	 */
+	
+	@Override
+	public TreeNode rotateUpsideDownV2(TreeNode root) {
+		if ( root == null)
+			return root;
+		
+		if( root.left == null && root.right == null)
+			return root;
+		
+		root.left = rotateUpsideDownV2(root.left);
+		
+		if ( root.left != null){
+			 return siblingRotate(root);
+		}
+		return root;
+	}
+
+	private TreeNode rightMostNode(TreeNode root){
+		while(root.right !=null){
+			root = root.right;
+		}
+		return root;
+	}
+	private TreeNode  siblingRotate(TreeNode root) {
+		
+		TreeNode left = root.left;
+		TreeNode rightMost = rightMostNode(left);
+		rightMost.left = root.right;
+		rightMost.right = root;
+		root.left = null;
+		root.right = null;
+		
+		return left;
+	}
+	
+	private void  siblingRotate2(TreeNode root) {
+		TreeNode newRoot = root.left;
+		newRoot.left = root.right;
+		newRoot.right= root;
+		root.left= null;
+		root.right = null;
+	}
 
 	@Override
 	public int pathLength(TreeNode root, int n) {

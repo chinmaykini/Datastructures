@@ -38,8 +38,11 @@ public interface TreeFunctions {
 	void traverseSpiralNonRecursive(TreeNode root);
 
 	void printNodesInRange(TreeNode root, int min, int max);
+
+	TreeNode rotateUpsideDownV2(TreeNode root);
 	
+	TreeNode rotateUpsideDownV3(TreeNode root);
+
 	int pathLength(TreeNode root, int n);
-	
 	
 }
